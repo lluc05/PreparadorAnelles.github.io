@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREPARADOR D'ANELLES</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background-color: #ddd;
+            cursor: pointer;
+            margin-right: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #ccc;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .ring-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            display: none;
+        }
+
+        .ring-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ring {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            border: 3px solid #aaa;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        .point {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #0056b3;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            transform: rotate(-90); /* Rotar el texto per fer-lo vertical */
+        }
+
+        select {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            padding: 4px;
+            width: 150px;
+            text-align: center;
+        }
+
+        /* Distribució dels punts al voltant de cada anella */
+        .point:nth-child(1) { transform: rotate(0deg) translate(140px) rotate(0deg); }
+        .point:nth-child(2) { transform: rotate(30deg) translate(140px) rotate(-30deg); }
+        .point:nth-child(3) { transform: rotate(60deg) translate(140px) rotate(-60deg); }
+        .point:nth-child(4) { transform: rotate(90deg) translate(140px) rotate(-90deg); }
+        .point:nth-child(5) { transform: rotate(120deg) translate(140px) rotate(-120deg); }
+        .point:nth-child(6) { transform: rotate(150deg) translate(140px) rotate(-150deg); }
+        .point:nth-child(7) { transform: rotate(180deg) translate(140px) rotate(-180deg); }
+        .point:nth-child(8) { transform: rotate(210deg) translate(140px) rotate(-210deg); }
+        .point:nth-child(9) { transform: rotate(240deg) translate(140px) rotate(-240deg); }
+        .point:nth-child(10) { transform: rotate(270deg) translate(140px) rotate(-270deg); }
+        .point:nth-child(11) { transform: rotate(300deg) translate(140px) rotate(-300deg); }
+        .point:nth-child(12) { transform: rotate(330deg) translate(140px) rotate(-330deg); }
+        
+        .selected {
+            background-color: #ff6347; /* Color per al punt seleccionat */
+        }
+    </style>
+</head>
+<body>
+    <h1>PREPARADOR D'ANELLES</h1>
+    <div class="tabs">
+        <div class="tab" onclick="showTab(1)">PTD</div>
+        <div class="tab" onclick="showTab(2)">NTD</div>
+        <div class="tab" onclick="showTab(3)">TD</div>
+        <div class="tab" onclick="showTab(4)">TOC</div>
+    </div>
+
+    <div class="container">
+        <!-- Primera pestanya -->
+        <div class="ring-row" id="tab1">
+            <div class="ring-container">
+                <select id="selector1" onchange="assignNameToSelectedPoint('ring1', 'selector1')">
+                    <option value="">Selecciona un nom</option>
+                    <option>Adrià</option>
+                    <option>Jordi B</option>
+                    <option>Biel</option>
+                    <option>Jordi P</option>
+                    <option>Oriol</option>
+                    <option>Arnau</option>
+                    <option>David</option>
+                    <option>Arnau</option>
+                    <option>Marti</option>
+                    <option>Laia</option>
+                    <option>Aura</option>
+                    <option>Nuria</option>
+                    <option>Montse</option>
+                    <option>Jordina</option>
+                    <option>Blanca</option> 
+                    <option>Aran</option>
+                </select>
+                <div class="ring" id="ring1">
+                    <div class="point" onclick="selectPoint(this, 'ring1')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring1')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring1')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring1')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring1')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring1')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring1')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring1')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring1')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring1')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring1')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring1')"></div>
+                </div>
+            </div>
+
+            <div class="ring-container">
+                <select id="selector2" onchange="assignNameToSelectedPoint('ring2', 'selector2')">
+                    <option value="">Selecciona un nom</option>
+                    <option>Adrià</option>
+                    <option>Jordi B</option>
+                    <option>Biel</option>
+                    <option>Jordi P</option>
+                    <option>Oriol</option>
+                    <option>Arnau</option>
+                    <option>David</option>
+                    <option>Arnau</option>
+                    <option>Marti</option>
+                    <option>Laia</option>
+                    <option>Aura</option>
+                    <option>Nuria</option>
+                    <option>Montse</option>
+                    <option>Jordina</option>
+                    <option>Blanca</option> 
+                    <option>Aran</option>
+                </select>
+                <div class="ring" id="ring2">
+                    <div class="point" onclick="selectPoint(this, 'ring2')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring2')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring2')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring2')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring2')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring2')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring2')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring2')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring2')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring2')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring2')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring2')"></div>
+                </div>
+            </div>
+
+            <div class="ring-container">
+                <select id="selector3" onchange="assignNameToSelectedPoint('ring3', 'selector3')">
+                    <option value="">Selecciona un nom</option>
+                    <option>Adrià</option>
+                    <option>Jordi B</option>
+                    <option>Biel</option>
+                    <option>Jordi P</option>
+                    <option>Oriol</option>
+                    <option>Arnau</option>
+                    <option>David</option>
+                    <option>Arnau</option>
+                    <option>Marti</option>
+                    <option>Laia</option>
+                    <option>Aura</option>
+                    <option>Nuria</option>
+                    <option>Montse</option>
+                    <option>Jordina</option>
+                    <option>Blanca</option> 
+                    <option>Aran</option>
+                </select>
+                <div class="ring" id="ring3">
+                    <div class="point" onclick="selectPoint(this, 'ring3')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring3')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring3')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring3')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring3')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring3')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring3')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring3')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring3')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring3')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring3')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring3')"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Duplicar pestanya per a les següents -->
+        <div class="ring-row" id="tab2">
+            <div class="ring-container">
+                <select id="selector4" onchange="assignNameToSelectedPoint('ring4', 'selector4')">
+                    <option value="">Selecciona un nom</option>
+                    <option>Lluc</option>
+                    <option>Josep</option>
+                    <option>Pau</option>
+                    <option>Nil</option>
+                    <option>Joan</option>
+                    <option>Roger</option>
+                    <option>Marcel</option>
+                    <option>Xavi</option>
+                    <option>Mikas</option>
+                    <option>Laura</option>
+                    <option>Berta1</option>
+                    <option>Berta2</option>
+                    <option>Laia</option>
+                    <option>Ivet</option>
+                    <option>Abril</option>
+                    <option>Neus</option>
+                </select>
+                <div class="ring" id="ring4">
+                    <div class="point" onclick="selectPoint(this, 'ring4')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring4')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring4')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring4')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring4')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring4')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring4')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring4')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring4')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring4')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring4')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring4')"></div>
+                </div>
+            </div>
+
+            <div class="ring-container">
+                <select id="selector5" onchange="assignNameToSelectedPoint('ring5', 'selector5')">
+                    <option value="">Selecciona un nom</option>
+                    <option>Lluc</option>
+                    <option>Josep</option>
+                    <option>Pau</option>
+                    <option>Nil</option>
+                    <option>Joan</option>
+                    <option>Roger</option>
+                    <option>Marcel</option>
+                    <option>Xavi</option>
+                    <option>Mikas</option>
+                    <option>Laura</option>
+                    <option>Berta1</option>
+                    <option>Berta2</option>
+                    <option>Laia</option>
+                    <option>Ivet</option>
+                    <option>Abril</option>
+                    <option>Neus</option>
+                </select>
+                <div class="ring" id="ring5">
+                    <div class="point" onclick="selectPoint(this, 'ring5')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring5')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring5')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring5')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring5')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring5')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring5')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring5')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring5')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring5')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring5')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring5')"></div>
+                </div>
+            </div>
+
+            <div class="ring-container">
+                <select id="selector6" onchange="assignNameToSelectedPoint('ring6', 'selector6')">
+                    <option value="">Selecciona un nom</option>
+                    <option>Lluc</option>
+                    <option>Josep</option>
+                    <option>Pau</option>
+                    <option>Nil</option>
+                    <option>Joan</option>
+                    <option>Roger</option>
+                    <option>Marcel</option>
+                    <option>Xavi</option>
+                    <option>Mikas</option>
+                    <option>Laura</option>
+                    <option>Berta1</option>
+                    <option>Berta2</option>
+                    <option>Laia</option>
+                    <option>Ivet</option>
+                    <option>Abril</option>
+                    <option>Neus</option>
+                </select>
+                <div class="ring" id="ring6">
+                    <div class="point" onclick="selectPoint(this, 'ring6')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring6')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring6')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring6')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring6')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring6')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring6')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring6')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring6')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring6')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring6')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring6')"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ring-row" id="tab3">
+            <div class="ring-container">
+                <select id="selector7" onchange="assignNameToSelectedPoint('ring7', 'selector7')">
+                    <option value="">Selecciona un nom</option>
+                    <option>Bernat</option>
+                    <option>Magi</option>
+                    <option>Joan.G</option>
+                    <option>Lluc</option>
+                    <option>Josep</option>
+                    <option>Pau</option>
+                    <option>Nil</option>
+                    <option>Oscar</option>
+                    <option>Joan.S</option>
+                    <option>Marta</option>
+                    <option>Martina</option>
+                    <option>Mar</option>
+                    <option>Laura.G</option>
+                    <option>Laura.A</option>
+                    <option>Elia</option>
+                    <option>Jana</option>
+                    <option>Ares</option>
+                    <option>Gisela</option>
+                    <option>Marina</option>
+                    <option>Xenia</option>
+                </select>
+                <div class="ring" id="ring7">
+                    <div class="point" onclick="selectPoint(this, 'ring7')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring7')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring7')"></div>                                 
+                    <div class="point" onclick="selectPoint(this, 'ring7')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring7')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring7')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring7')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring7')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring7')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring7')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring7')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring7')"></div>
+            </div>
+
+            <div class="ring-container">
+                <select id="selector8" onchange="assignNameToSelectedPoint('ring8', 'selector8')">
+                    <option value="">Selecciona un nom</option>
+                    <option>Bernat</option>
+                    <option>Magi</option>
+                    <option>Joan.G</option>
+                    <option>Lluc</option>
+                    <option>Josep</option>
+                    <option>Pau</option>
+                    <option>Nil</option>
+                    <option>Oscar</option>
+                    <option>Joan.S</option>
+                    <option>Marta</option>
+                    <option>Martina</option>
+                    <option>Mar</option>
+                    <option>Laura.G</option>
+                    <option>Laura.A</option>
+                    <option>Elia</option>
+                    <option>Jana</option>
+                    <option>Ares</option>
+                    <option>Gisela</option>
+                    <option>Marina</option>
+                    <option>Xenia</option>
+                </select>
+                <div class="ring" id="ring8">
+                    <div class="point" onclick="selectPoint(this, 'ring8')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring8')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring8')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring8')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring8')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring8')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring8')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring8')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring8')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring8')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring8')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring8')"></div>
+                </div>
+            </div>
+
+            <div class="ring-container">
+                <select id="selector9" onchange="assignNameToSelectedPoint('ring9', 'selector9')">
+                    <option value="">Selecciona un nom</option>
+                    <option>Bernat</option>
+                    <option>Magi</option>
+                    <option>Joan.G</option>
+                    <option>Lluc</option>
+                    <option>Josep</option>
+                    <option>Pau</option>
+                    <option>Nil</option>
+                    <option>Oscar</option>
+                    <option>Joan.S</option>
+                    <option>Marta</option>
+                    <option>Martina</option>
+                    <option>Mar</option>
+                    <option>Laura.G</option>
+                    <option>Laura.A</option>
+                    <option>Elia</option>
+                    <option>Jana</option>
+                    <option>Ares</option>
+                    <option>Gisela</option>
+                    <option>Marina</option>
+                    <option>Xenia</option>
+                </select>
+                <div class="ring" id="ring9">
+                    <div class="point" onclick="selectPoint(this, 'ring9')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring9')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring9')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring9')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring9')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring9')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring9')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring9')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring9')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring9')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring9')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring9')"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ring-row" id="tab4">
+            <div class="ring-container">
+                <select id="selector10" onchange="assignNameToSelectedPoint('ring10', 'selector10')">
+                    <option value="">Selecciona un nom</option>
+                    <option>Adrià</option>
+                    <option>Jordi B</option>
+                    <option>Biel</option>
+                    <option>Arnau</option>
+                </select>
+                <div class="ring" id="ring10">
+                    <div class="point" onclick="selectPoint(this, 'ring10')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring10')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring10')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring10')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring10')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring10')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring10')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring10')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring10')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring10')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring10')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring10')"></div>
+                </div>
+            </div>
+
+            <div class="ring-container">
+                <select id="selector11" onchange="assignNameToSelectedPoint('ring11', 'selector11')">
+                    <option value="">Selecciona un nom</option>
+                    <option>Aran</option>
+                    <option>Laia</option>
+                    <option>Núria</option>
+                    <option>Montse</option>
+                </select>
+                <div class="ring" id="ring11">
+                    <div class="point" onclick="selectPoint(this, 'ring11')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring11')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring11')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring11')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring11')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring11')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring11')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring11')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring11')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring11')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring11')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring11')"></div>
+                </div>
+            </div>
+
+            <div class="ring-container">
+                <select id="selector12" onchange="assignNameToSelectedPoint('ring12', 'selector12')">
+                    <option value="">Selecciona un nom</option>
+                    <option>Blanca</option>
+                    <option>Lluc</option>
+                    <option>Josep</option>
+                    <option>Pau</option>
+                </select>
+                <div class="ring" id="ring12">
+                    <div class="point" onclick="selectPoint(this, 'ring12')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring12')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring12')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring12')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring12')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring12')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring12')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring12')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring12')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring12')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring12')"></div>
+                    <div class="point" onclick="selectPoint(this, 'ring12')"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedPoint = null;
+
+        function showTab(tabNumber) {
+            const tabs = document.querySelectorAll('.ring-row');
+            tabs.forEach((tab, index) => {
+                tab.style.display = index === tabNumber - 1 ? 'flex' : 'none';
+            });
+        }
+
+        function selectPoint(point, ringId) {
+            if (selectedPoint) {
+                selectedPoint.classList.remove('selected');
+            }
+            selectedPoint = point;
+            selectedPoint.classList.add('selected');
+        }
+
+        function assignNameToSelectedPoint(ringId, selectorId) {
+            const selector = document.getElementById(selectorId);
+            const selectedName = selector.value;
+            if (selectedPoint && selectedName) {
+                // Assegna el nom al punt seleccionat
+                const currentText = selectedPoint.innerText;
+                if (!currentText || currentText !== selectedName) {
+                    // Comprova que el nom no estigui ja assignat
+                    const points = document.querySelectorAll(`#${ringId} .point`);
+                    const names = Array.from(points).map(point => point.innerText);
+                    if (!names.includes(selectedName)) {
+                        selectedPoint.innerText = selectedName;
+                    } else {
+                        alert('El nom ja està assignat a un altre punt.');
+                    }
+                }
+            }
+        }
+
+        // Inicialitzar la primera pestanya visible
+        showTab(1);
+    </script>
+</body>
+</html>
